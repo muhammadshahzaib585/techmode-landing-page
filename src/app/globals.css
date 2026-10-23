@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* 
+ * ============================================================================
+ * TECHMODE ENTERPRISE DESIGN SYSTEM: "INDUSTRIAL BLUEPRINT"
+ * ============================================================================
+ * Palette:
+ * - Base Canvas: #080E17 (Deepest Void)
+ * - Surface Cards: #0E141D and #161C25
+ * - Elevated Hover: #1F2633
+ * - Hairline Structural Borders: #232C3B / rgba(255, 255, 255, 0.08)
+ * - Primary Accent: Electric Cyan #00E5FF
+ * - Secondary Status / SLA: Emerald Mint #10B981
+ * - Body Typography: Slate Gray #94A3B8
+ * - Headings: Pure White #F8FAFC
+ * ============================================================================
+ */
+
+:root {
+  /* DARK INDUSTRIAL BLUEPRINT (Primary Enterprise Aesthetic) */
+  --bg-page: #080E17;
+  --fg-page: #F8FAFC;
+  
+  --surface-card: #0E141D;
+  --surface-card-secondary: #161C25;
+  --surface-card-hover: #1F2633;
+  --surface-subtle: #121924;
+  
+  --border-hairline: #232C3B;
+  --border-subtle: #232C3B;
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-focus: #00E5FF;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  
+  /* ELECTRIC CYAN PRIMARY ACCENT */
+  --accent-primary: #00E5FF;
+  --accent-hover: #33EBFF;
+  --accent-contrast: #080E17;
+  --accent-subtle: rgba(0, 229, 255, 0.08);
+  --accent-border: rgba(0, 229, 255, 0.28);
+  --accent-text: #00E5FF;
+
+  /* EMERALD MINT SECONDARY ACCENT */
+  --mint-primary: #10B981;
+  --mint-subtle: rgba(16, 185, 129, 0.12);
+  --mint-border: rgba(16, 185, 129, 0.3);
+
+  /* STATUS TOKENS */
+  --status-error-bg: #2B1115;
+  --status-error-border: #7F1D1D;
+  --status-error-text: #FCA5A5;
+  
+  --status-success-bg: rgba(16, 185, 129, 0.12);
+  --status-success-border: #10B981;
+  --status-success-text: #34D399;
+
+  /* SHADOWS & INDUSTRIAL GLOWS */
+  --shadow-subtle: 0 1px 3px 0 rgb(0 0 0 / 0.5);
+  --shadow-card: 0 4px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-elevated: 0 12px 24px -4px rgb(0 0 0 / 0.7);
+  --glow-cyan: 0 0 25px rgba(0, 229, 255, 0.18);
+}
+
+/* OPTIONAL HIGH-CONTRAST LIGHT MODE */
+html[data-theme="light"] {
+  --bg-page: #F8FAFC;
+  --fg-page: #080E17;
+  
+  --surface-card: #FFFFFF;
+  --surface-card-secondary: #F1F5F9;
+  --surface-card-hover: #E2E8F0;
+  --surface-subtle: #F1F5F9;
+  
+  --border-hairline: #CBD5E1;
+  --border-subtle: #E2E8F0;
+  --border-strong: #94A3B8;
+  --border-focus: #0099B8;
+  
+  --text-primary: #080E17;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  
+  --accent-primary: #0099B8;
+  --accent-hover: #007A94;
+  --accent-contrast: #FFFFFF;
+  --accent-subtle: #E0F7FA;
+  --accent-border: #B2EBF2;
+  --accent-text: #007A94;
+
+  --mint-primary: #059669;
+  --mint-subtle: #D1FAE5;
+  --mint-border: #A7F3D0;
+}
+
+/* TAILWIND UTILITY MAPPINGS */
+@theme inline {
+  --color-page: var(--bg-page);
+  --color-page-fg: var(--fg-page);
+  --color-card: var(--surface-card);
+  --color-card-secondary: var(--surface-card-secondary);
+  --color-card-hover: var(--surface-card-hover);
+  --color-subtle: var(--surface-subtle);
+  
+  --color-border-hairline: var(--border-hairline);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-accent: var(--accent-primary);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-border: var(--accent-border);
+  --color-accent-text: var(--accent-text);
+
+  --color-mint: var(--mint-primary);
+  --color-mint-subtle: var(--mint-subtle);
+  
+  --font-sans: var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* BASE STYLES */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ACCESSIBLE FOCUS STYLES (WCAG 2.1 AA) */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+/* PREFERS-REDUCED-MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* INDUSTRIAL AMBIENT GRID PATTERN (5% opacity) */
+.blueprint-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.blueprint-grid-dense {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+}
